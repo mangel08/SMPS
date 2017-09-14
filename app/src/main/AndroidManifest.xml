@@ -16,6 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".StepUpActivity"
+            android:label="@string/title_activity_step_up"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".StepDownActivity"
+            android:label="@string/title_activity_step_down"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
