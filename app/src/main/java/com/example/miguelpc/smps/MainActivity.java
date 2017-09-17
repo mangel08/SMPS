@@ -24,19 +24,43 @@ public class MainActivity extends AppCompatActivity {
         tvStepDown = (TextView)findViewById(R.id.tvStep_down);
         tvStepUp = (TextView)findViewById(R.id.tvStep_up);
 
+        //FUNCIONES CLICKLISTERNER STEP DOWN
+        //REDIRECCIÓN AL ACTIVITY StepUpActivity
         imgA.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),StepUpActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        imgB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),StepDownActivity.class);
                 startActivity(intent);
+
+            }
+        });
+
+        tvStepDown.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),StepDownActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+        //FUNCIONES CLICKLISTER STEP UP
+        //REDIRECCIÓN AL ACTIVITY StepUpActivity
+        imgB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),StepUpActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+        tvStepUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),StepUpActivity.class);
+                startActivity(intent);
+
             }
         });
 

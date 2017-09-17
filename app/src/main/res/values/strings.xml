@@ -2,4 +2,6 @@
     <string name="app_name">SMPS</string>
     <string name="title_activity_step_up">StepUp</string>
     <string name="title_activity_step_down">StepDown</string>
+    <string name="title_activity_op_astable">Operación Astable</string>
+    <string name="action_settings">Settings</string>
 </resources>

@@ -8,4 +8,10 @@
     tools:context="com.example.miguelpc.smps.StepUpActivity"
     tools:showIn="@layout/activity_step_up">
 
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srcCompat="@drawable/imagen_b0"/>
+
+
 </RelativeLayout>
