@@ -25,8 +25,12 @@
             android:label="@string/title_activity_step_down"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".OpAstableActivity"
-            android:label="@string/title_activity_op_astable"
+            android:name=".OpEstableActivity"
+            android:label="@string/title_activity_op_estable"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".PWMActivity"
+            android:label="@string/title_activity_pwm"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

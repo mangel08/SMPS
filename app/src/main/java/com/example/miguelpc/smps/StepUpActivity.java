@@ -10,6 +10,9 @@ import android.view.View;
 
 public class StepUpActivity extends AppCompatActivity {
 
+    //VARIABLES GLOBALES
+    public static String VISTA = "SU";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,8 +24,9 @@ public class StepUpActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),OpAstableActivity.class);
+                Intent intent = new Intent(getApplicationContext(),OpEstableActivity.class);
                 intent.putExtra("view", String.valueOf("SU"));
+                intent.putExtra("view",VISTA);
                 startActivity(intent);
             }
         });

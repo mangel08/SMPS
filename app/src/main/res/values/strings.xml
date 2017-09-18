@@ -4,4 +4,6 @@
     <string name="title_activity_step_down">StepDown</string>
     <string name="title_activity_op_astable">Operación Astable</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_op_estable">Operación Estable</string>
+    <string name="title_activity_pwm">PWM</string>
 </resources>
