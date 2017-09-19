@@ -109,14 +109,14 @@ public class OpEstableActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), PWMActivity.class);
                 i.putExtra("view", v);
-                i.putExtra("R1", R1);
-                i.putExtra("RA", ra);
-                i.putExtra("RB", rb);
-                i.putExtra("C1", C1);
-                i.putExtra("C2", C2);
-                i.putExtra("C3", C3);
+                i.putExtra("R1", String.valueOf(R1));
+                i.putExtra("RA", String.valueOf(ra));
+                i.putExtra("RB", String.valueOf(rb));
+                i.putExtra("C1", String.valueOf(C1));
+                i.putExtra("C2", String.valueOf(C2));
+                i.putExtra("C3", String.valueOf(C3));
                 i.putExtra("Elemento", Elemento);
-                i.putExtra("F", frecuencia);
+                i.putExtra("F", String.valueOf(frecuencia));
                 startActivity(i);
             }
         });

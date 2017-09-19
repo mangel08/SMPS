@@ -6,4 +6,5 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_op_estable">Operación Estable</string>
     <string name="title_activity_pwm">PWM</string>
+    <string name="title_activity_amplificador_dif">Amplificador Diferencial</string>
 </resources>

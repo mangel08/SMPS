@@ -1,10 +1,12 @@
 package com.example.miguelpc.smps;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,11 +15,17 @@ import android.widget.Toast;
 
 public class PWMActivity extends AppCompatActivity {
 
+    private static final String TAG = PWMActivity.class.getSimpleName();
     public EditText etC4;
     public double R2, clockperiod;
-    public double C4;
+    public double C4, f, ra, rb, C1, C2, C3, R1;
     public TextView tvR2, tvR3, tvC4, tvElemento;
     public Button btnCalcular;
+    public String Elemento = "";
+    public String Elemento2 = "TIMER 555";
+    public FloatingActionButton fab;
+    public String v = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +33,18 @@ public class PWMActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pwm);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        f = Double.parseDouble(getIntent().getStringExtra("F"));
+        R1 = Double.parseDouble(getIntent().getStringExtra("R1"));
+        ra = Double.parseDouble(getIntent().getStringExtra("RA"));
+        Elemento = getIntent().getStringExtra("Elemento");
+        rb = Double.parseDouble(getIntent().getStringExtra("RB"));
+        C1 = Double.parseDouble(getIntent().getStringExtra("C1"));
+        C2 = Double.parseDouble(getIntent().getStringExtra("C2"));
+        C3 = Double.parseDouble(getIntent().getStringExtra("C3"));
+
+
+        v = getIntent().getStringExtra("view");
 
         //Editext del formulario
         etC4 = (EditText) findViewById(R.id.etC4);
@@ -39,7 +59,7 @@ public class PWMActivity extends AppCompatActivity {
         btnCalcular = (Button)findViewById(R.id.btnCalcular);
 
         //FloatButton
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
 
         btnCalcular.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,23 +69,17 @@ public class PWMActivity extends AppCompatActivity {
 
                 if(!aux_c4.equals("")){
 
-                    aux_c4 = String.valueOf(Double.parseDouble(aux_c3) / 1000000L);
-                    double f = getIntent().getStringExtra("F");
+                    aux_c4 = String.valueOf(Double.parseDouble(aux_c4) / 1000000L);
+                    clockperiod = ClockPeriod(f);
+                    R2 = CalcularR2(Double.parseDouble(aux_c4), clockperiod);
+                    C4 = Double.parseDouble(aux_c4);
+                    tvR2.setText("R2: " + R2);
+                    tvR3.setText("RA: 1000 Ohm");
+                    tvC4.setText("C4: " + String.valueOf(C4));
+                    tvElemento.setText("Elemento integrado: " + Elemento2);
 
-                    clockperiod = ClockPeriod();
-                    frecuencia = CalcularFrecuencia(ra,Double.parseDouble(aux_rb),Double.parseDouble(aux_c3));
-
-                    tvR1.setText("R1: " + R1 +" Ohm");
-                    tvRA.setText("RA: " + String.valueOf(ra));
-                    tvRB.setText("RB: " + aux_rb);
-                    tvC1.setText("C1: " + C1 + " Micro Faradios");
-                    tvC2.setText("C2: " + C2 + " Micro Faradios");
-                    tvC3.setText("C3: " + aux_c3);
-                    tvElemento.setText("Elemento integrado: " + Elemento);
-                    tvFrecuencia.setText("Frecuencia: " + frecuencia);
-
-                    linearLayout1.setVisibility(View.VISIBLE);
                     fab.setVisibility(View.VISIBLE);
+
                 }else{
                     Toast.makeText(getApplicationContext(), "Campos vacios", Toast.LENGTH_LONG).show();
                 }
@@ -76,22 +90,44 @@ public class PWMActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent i = new Intent(getApplicationContext(), PWMActivity.class);
+                i.putExtra("view", v);
+                i.putExtra("R1", R1);
+                i.putExtra("R2", R2);
+                i.putExtra("RA", ra);
+                i.putExtra("RB", rb);
+                i.putExtra("C1", C1);
+                i.putExtra("C2", C2);
+                i.putExtra("C3", C3);
+                i.putExtra("C4", String.valueOf(C4));
+                i.putExtra("Elemento", Elemento);
+                i.putExtra("Elemento2", Elemento2);
+                i.putExtra("F", f);
+                startActivity(i);
             }
         });
 
     }
 
-    public Double ClockPeriod(double f){
-
+    public double ClockPeriod(double f){
+        Log.e(TAG, "F: " + String.valueOf(f));
+        f = (f * 1000);
         double result = 1/f;
+
+        Log.e(TAG, "F: " + String.valueOf(f));
+        Log.e(TAG, "CLOCK: " + String.valueOf(result));
 
         return result;
     }
 
-    public Double CalcularR2(double c4, double clockperiod){
+    public double CalcularR2(double c4, double clockperiod){
 
-        double result = ((1/4)*clockperiod)/c4;
+        Log.e(TAG, "C4: " + String.valueOf(c4));
+        Log.e(TAG, "CLOCK: " + String.valueOf(clockperiod));
+
+        double result = ((0.25)*clockperiod)/c4;
+
+        Log.e(TAG, "R2: " + String.valueOf(result));
 
         return result;
     }
