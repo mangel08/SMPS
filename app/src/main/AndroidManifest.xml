@@ -43,6 +43,10 @@
         <activity
             android:name=".StepDownFinalActivity"
             android:label="@string/title_activity_step_down_final"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ResultadosSUActivity"
+            android:label="@string/title_activity_resultados_su"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

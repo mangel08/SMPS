@@ -31,6 +31,7 @@ public class OpEstableActivity extends AppCompatActivity {
     public double frecuencia = 0;
     public double C1 = 45;
     public double C2 = 0.1;
+    public double CT;
     public String Elemento = "TIMER 555";
 
     @Override
@@ -82,6 +83,8 @@ public class OpEstableActivity extends AppCompatActivity {
                     //aux_rb = String.valueOf(Double.parseDouble(aux_rb) / 1000);
                     aux_c3 = String.valueOf(Double.parseDouble(aux_c3) / 1000000L);
 
+                    CT = Double.parseDouble(aux_ct);
+
                     ra = CalcularRa(Double.parseDouble(aux_rb), Double.parseDouble(aux_ct));
                     frecuencia = CalcularFrecuencia(ra,Double.parseDouble(aux_rb),Double.parseDouble(aux_c3));
 
@@ -115,6 +118,7 @@ public class OpEstableActivity extends AppCompatActivity {
                 i.putExtra("C1", String.valueOf(C1));
                 i.putExtra("C2", String.valueOf(C2));
                 i.putExtra("C3", String.valueOf(C3));
+                i.putExtra("CT", String.valueOf(CT));
                 i.putExtra("Elemento", Elemento);
                 i.putExtra("F", String.valueOf(frecuencia));
                 startActivity(i);

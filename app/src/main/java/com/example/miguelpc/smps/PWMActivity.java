@@ -18,7 +18,7 @@ public class PWMActivity extends AppCompatActivity {
     private static final String TAG = PWMActivity.class.getSimpleName();
     public EditText etC4;
     public double R2, clockperiod;
-    public double C4, f, ra, rb, C1, C2, C3, R1;
+    public double C4, f, ra, rb, C1, C2, C3, R1, CT;
     public TextView tvR2, tvR3, tvC4, tvElemento;
     public Button btnCalcular;
     public String Elemento = "";
@@ -42,6 +42,7 @@ public class PWMActivity extends AppCompatActivity {
         C1 = Double.parseDouble(getIntent().getStringExtra("C1"));
         C2 = Double.parseDouble(getIntent().getStringExtra("C2"));
         C3 = Double.parseDouble(getIntent().getStringExtra("C3"));
+        CT = Double.parseDouble(getIntent().getStringExtra("CT"));
         v = getIntent().getStringExtra("view");
 
         //Editext del formulario
@@ -98,6 +99,7 @@ public class PWMActivity extends AppCompatActivity {
                 i.putExtra("C2", String.valueOf(C2));
                 i.putExtra("C3", String.valueOf(C3));
                 i.putExtra("C4", String.valueOf(C4));
+                i.putExtra("CT", String.valueOf(CT));
                 i.putExtra("Elemento", Elemento);
                 i.putExtra("Elemento2", Elemento2);
                 i.putExtra("F", String.valueOf(f));

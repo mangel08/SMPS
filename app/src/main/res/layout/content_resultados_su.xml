@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.miguelpc.smps.ResultadosSUActivity"
+    tools:showIn="@layout/activity_resultados_su">
+
+    <ImageView
+        android:id="@+id/imgfinal"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/imagen_b5"/>
+
+    <LinearLayout
+        android:id="@+id/lLayout1"
+        android:layout_below="@+id/imgfinal"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="vertical">
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lLayout2"
+        android:layout_below="@+id/imgfinal"
+        android:layout_toRightOf="@+id/lLayout1"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="vertical">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lLayout3"
+        android:layout_below="@+id/imgfinal"
+        android:layout_toRightOf="@+id/lLayout2"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="vertical">
+
+    </LinearLayout>
+
+</RelativeLayout>
