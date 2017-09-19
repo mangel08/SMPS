@@ -7,4 +7,6 @@
     <string name="title_activity_op_estable">Operación Estable</string>
     <string name="title_activity_pwm">PWM</string>
     <string name="title_activity_amplificador_dif">Amplificador Diferencial</string>
+    <string name="title_activity_step_up_final">StepUp</string>
+    <string name="title_activity_step_down_final">StepDown</string>
 </resources>

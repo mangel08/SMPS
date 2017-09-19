@@ -35,6 +35,14 @@
         <activity
             android:name=".AmplificadorDifActivity"
             android:label="@string/title_activity_amplificador_dif"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".StepUpFinalActivity"
+            android:label="@string/title_activity_step_up_final"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".StepDownFinalActivity"
+            android:label="@string/title_activity_step_down_final"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

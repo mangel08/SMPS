@@ -42,8 +42,6 @@ public class PWMActivity extends AppCompatActivity {
         C1 = Double.parseDouble(getIntent().getStringExtra("C1"));
         C2 = Double.parseDouble(getIntent().getStringExtra("C2"));
         C3 = Double.parseDouble(getIntent().getStringExtra("C3"));
-
-
         v = getIntent().getStringExtra("view");
 
         //Editext del formulario
@@ -90,19 +88,19 @@ public class PWMActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), PWMActivity.class);
+                Intent i = new Intent(getApplicationContext(), AmplificadorDifActivity.class);
                 i.putExtra("view", v);
-                i.putExtra("R1", R1);
-                i.putExtra("R2", R2);
-                i.putExtra("RA", ra);
-                i.putExtra("RB", rb);
-                i.putExtra("C1", C1);
-                i.putExtra("C2", C2);
-                i.putExtra("C3", C3);
+                i.putExtra("R1", String.valueOf(R1));
+                i.putExtra("R2", String.valueOf(R2));
+                i.putExtra("RA", String.valueOf(ra));
+                i.putExtra("RB", String.valueOf(rb));
+                i.putExtra("C1", String.valueOf(C1));
+                i.putExtra("C2", String.valueOf(C2));
+                i.putExtra("C3", String.valueOf(C3));
                 i.putExtra("C4", String.valueOf(C4));
                 i.putExtra("Elemento", Elemento);
                 i.putExtra("Elemento2", Elemento2);
-                i.putExtra("F", f);
+                i.putExtra("F", String.valueOf(f));
                 startActivity(i);
             }
         });

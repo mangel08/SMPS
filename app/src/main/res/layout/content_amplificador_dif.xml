@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,5 +7,121 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.miguelpc.smps.AmplificadorDifActivity"
     tools:showIn="@layout/activity_amplificador_dif">
+    
+    <ImageView
+        android:id="@+id/img3"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/imagen_a3"/>
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:id="@+id/lLayout1"
+        android:layout_below="@+id/img3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/etSMPS"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:hint="SMPS OUT"
+            android:textAlignment="center"
+            android:inputType="numberDecimal"
+            android:maxLength="3"/>
+
+        <EditText
+            android:id="@+id/etR6"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:hint="Valor R6"
+            android:textAlignment="center"
+            android:inputType="numberDecimal"/>
+
+        <EditText
+            android:id="@+id/etR10"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:hint="Valor R10"
+            android:textAlignment="center"
+            android:inputType="numberDecimal"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnCalcular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="calcular"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/lLayout1"/>
+
+    <LinearLayout
+        android:id="@+id/lLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnCalcular"
+        android:orientation="vertical"
+        android:layout_marginLeft="16dp"
+        >
+
+        <TextView
+            android:id="@+id/tvD1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <TextView
+            android:id="@+id/tvR4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <TextView
+            android:id="@+id/tvR5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <TextView
+            android:id="@+id/tvR6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <TextView
+            android:id="@+id/tvR7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <TextView
+            android:id="@+id/tvR8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <TextView
+            android:id="@+id/tvR9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <TextView
+            android:id="@+id/tvR10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <TextView
+            android:id="@+id/tvElemento3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+
+    </LinearLayout>
+
+</RelativeLayout>
