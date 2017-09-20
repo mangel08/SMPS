@@ -19,14 +19,17 @@ public class StepUpFinalActivity extends AppCompatActivity {
 
     //Variables Globales
     private static final String TAG = StepUpFinalActivity.class.getSimpleName();
-    public TextView tvL1, tvC5, tvD2, tvRL, tvQ1;
+    public TextView tvL1, tvC5, tvD2, tvRL, tvQ1, tvR11;
     public EditText  etVin, etVout, etRL;
     public Button btnCalcular;
-    public double R6, SMPS, R10, R4, R5, R7, R8, R9, R1, R2, ra, rb, C1, C2, C3, C4, CT, f, Vin, Vout, RL, IO, C5, L1;
+    public double R6, SMPS, R10, R5, R9, R2, ra, rb, C1, C2, C3, C4, CT, f, Vin, Vout, IO, C5, L1;
+    public int RL;
+    public String R11 = "1000 OHM";
+    public String R1, R3, R4, R7, R8;
     public double Vptp = 0.004;
     public String Elemento, Elemento2, Elemento3, D1, v;
     public String Q1 = "Transistor MOSFET IRFZ44N";
-    public String D2 = "diodo de silicio";
+    public String D2 = "diodo de alta frecuencia";
     public FloatingActionButton fab;
 
     @Override
@@ -48,6 +51,7 @@ public class StepUpFinalActivity extends AppCompatActivity {
         tvD2 = (TextView) findViewById(R.id.tvD2);
         tvRL = (TextView) findViewById(R.id.tvRL);
         tvQ1 = (TextView) findViewById(R.id.tvQ1);
+        tvR11 = (TextView) findViewById(R.id.tvR11);
 
         //EditText
         etVin = (EditText) findViewById(R.id.etVin);
@@ -56,8 +60,9 @@ public class StepUpFinalActivity extends AppCompatActivity {
 
         //Intents values
         v = getIntent().getStringExtra("view");
-        R1 = Double.parseDouble(getIntent().getStringExtra("R1"));
+        R1 = getIntent().getStringExtra("R1");
         R2 = Double.parseDouble(getIntent().getStringExtra("R2"));
+        R3 = getIntent().getStringExtra("R3");
         ra = Double.parseDouble(getIntent().getStringExtra("RA"));
         rb = Double.parseDouble(getIntent().getStringExtra("RB"));
         Elemento = getIntent().getStringExtra("Elemento");
@@ -71,9 +76,9 @@ public class StepUpFinalActivity extends AppCompatActivity {
         f = Double.parseDouble(getIntent().getStringExtra("F"));
         R5 = Double.parseDouble(getIntent().getStringExtra("R5"));
         R9 = Double.parseDouble(getIntent().getStringExtra("R9"));
-        R7 = Double.parseDouble(getIntent().getStringExtra("R7"));
-        R8 = Double.parseDouble(getIntent().getStringExtra("R8"));
-        R4 = Double.parseDouble(getIntent().getStringExtra("R4"));
+        R7 = getIntent().getStringExtra("R7");
+        R8 = getIntent().getStringExtra("R8");
+        R4 =getIntent().getStringExtra("R4");
         R6 = Double.parseDouble(getIntent().getStringExtra("R6"));
         R10 = Double.parseDouble(getIntent().getStringExtra("R10"));
         D1 = getIntent().getStringExtra("D1");
@@ -90,7 +95,7 @@ public class StepUpFinalActivity extends AppCompatActivity {
 
                     Vin = Double.parseDouble(aux_vin);
                     Vout = Double.parseDouble(aux_vout);
-                    RL = Double.parseDouble(aux_rl);
+                    RL = Integer.parseInt(aux_rl);
 
                     IO = CalcularIO(Vout,Vptp,RL);
                     C5 = CalcularC5(IO,CT,f,Vptp);
@@ -98,11 +103,12 @@ public class StepUpFinalActivity extends AppCompatActivity {
 
                     fab.setVisibility(View.VISIBLE);
 
-                    tvC5.setText(String.valueOf(C5));
-                    tvL1.setText(String.valueOf(L1));
-                    tvQ1.setText(String.valueOf(Q1));
-                    tvRL.setText(String.valueOf(RL));
-                    tvD2.setText(String.valueOf(D2));
+                    tvC5.setText(String.valueOf("C5: " + C5));
+                    tvL1.setText(String.valueOf("L1: " + L1));
+                    tvQ1.setText(String.valueOf("Q1: " + Q1));
+                    tvRL.setText(String.valueOf("RL: " +RL));
+                    tvD2.setText(String.valueOf("D2: " +D2));
+                    tvR11.setText(String.valueOf("R11: " + R11));
 
                 }else{
                     Toast.makeText(getApplicationContext(), "Campos vacios", Toast.LENGTH_LONG).show();
@@ -118,6 +124,7 @@ public class StepUpFinalActivity extends AppCompatActivity {
                 i.putExtra("view", v);
                 i.putExtra("R1",  String.valueOf(R1));
                 i.putExtra("R2",  String.valueOf(R2));
+                i.putExtra("R3",  String.valueOf(R3));
                 i.putExtra("RA",  String.valueOf(ra));
                 i.putExtra("RB",  String.valueOf(rb));
                 i.putExtra("C1",  String.valueOf(C1));
@@ -126,6 +133,7 @@ public class StepUpFinalActivity extends AppCompatActivity {
                 i.putExtra("CT",  String.valueOf(CT));
                 i.putExtra("R6", String.valueOf(R6));
                 i.putExtra("R10", String.valueOf(R10));
+                i.putExtra("R11", String.valueOf(R11));
                 i.putExtra("SMPS", String.valueOf(SMPS));
                 i.putExtra("R5", String.valueOf(R5));
                 i.putExtra("R9", String.valueOf(R9));
@@ -142,6 +150,7 @@ public class StepUpFinalActivity extends AppCompatActivity {
                 i.putExtra("R4", String.valueOf(R4));
                 i.putExtra("RL", String.valueOf(RL));
                 i.putExtra("Q1", String.valueOf(Q1));
+                i.putExtra("L1", String.valueOf(L1));
                 i.putExtra("F",  String.valueOf(f));
                 startActivity(i);
 

@@ -78,27 +78,29 @@ public class OpEstableActivity extends AppCompatActivity {
 
                     if(Double.parseDouble(aux_ct) < 0 || Double.parseDouble(aux_ct) > 1 ){
                         Toast.makeText(getApplicationContext(), "Ciclo de trabajo debe ser un valor entre 0 y 1", Toast.LENGTH_LONG).show();
+                    }else{
+
+                        rb = Double.parseDouble(aux_rb);
+                        aux_c3 = String.valueOf(Double.parseDouble(aux_c3) / 1000000L);
+                        C3 = Double.parseDouble(aux_c3);
+
+                        CT = Double.parseDouble(aux_ct);
+
+                        ra = CalcularRa(Double.parseDouble(aux_rb), Double.parseDouble(aux_ct));
+                        frecuencia = CalcularFrecuencia(ra,Double.parseDouble(aux_rb), C3);
+
+                        tvR1.setText("R1: " + R1 +" Ohm");
+                        tvRA.setText("RA: " + String.valueOf(ra));
+                        tvRB.setText("RB: " + aux_rb);
+                        tvC1.setText("C1: " + C1 + " Micro Faradios");
+                        tvC2.setText("C2: " + C2 + " Micro Faradios");
+                        tvC3.setText("C3: " + aux_c3);
+                        tvElemento.setText("Elemento integrado: " + Elemento);
+                        tvFrecuencia.setText("Frecuencia: " + frecuencia);
+
+                        linearLayout1.setVisibility(View.VISIBLE);
+                        fab.setVisibility(View.VISIBLE);
                     }
-
-                    //aux_rb = String.valueOf(Double.parseDouble(aux_rb) / 1000);
-                    aux_c3 = String.valueOf(Double.parseDouble(aux_c3) / 1000000L);
-
-                    CT = Double.parseDouble(aux_ct);
-
-                    ra = CalcularRa(Double.parseDouble(aux_rb), Double.parseDouble(aux_ct));
-                    frecuencia = CalcularFrecuencia(ra,Double.parseDouble(aux_rb),Double.parseDouble(aux_c3));
-
-                    tvR1.setText("R1: " + R1 +" Ohm");
-                    tvRA.setText("RA: " + String.valueOf(ra));
-                    tvRB.setText("RB: " + aux_rb);
-                    tvC1.setText("C1: " + C1 + " Micro Faradios");
-                    tvC2.setText("C2: " + C2 + " Micro Faradios");
-                    tvC3.setText("C3: " + aux_c3);
-                    tvElemento.setText("Elemento integrado: " + Elemento);
-                    tvFrecuencia.setText("Frecuencia: " + frecuencia);
-
-                    linearLayout1.setVisibility(View.VISIBLE);
-                    fab.setVisibility(View.VISIBLE);
                 }else{
                     Toast.makeText(getApplicationContext(), "Campos vacios", Toast.LENGTH_LONG).show();
                 }

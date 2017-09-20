@@ -19,6 +19,7 @@ public class PWMActivity extends AppCompatActivity {
     public EditText etC4;
     public double R2, clockperiod;
     public double C4, f, ra, rb, C1, C2, C3, R1, CT;
+    public String R3 = "1000 Ohm";
     public TextView tvR2, tvR3, tvC4, tvElemento;
     public Button btnCalcular;
     public String Elemento = "";
@@ -73,7 +74,7 @@ public class PWMActivity extends AppCompatActivity {
                     R2 = CalcularR2(Double.parseDouble(aux_c4), clockperiod);
                     C4 = Double.parseDouble(aux_c4);
                     tvR2.setText("R2: " + R2);
-                    tvR3.setText("RA: 1000 Ohm");
+                    tvR3.setText("R3: " + R3);
                     tvC4.setText("C4: " + String.valueOf(C4));
                     tvElemento.setText("Elemento integrado: " + Elemento2);
 
@@ -93,6 +94,7 @@ public class PWMActivity extends AppCompatActivity {
                 i.putExtra("view", v);
                 i.putExtra("R1", String.valueOf(R1));
                 i.putExtra("R2", String.valueOf(R2));
+                i.putExtra("R3", String.valueOf(R3));
                 i.putExtra("RA", String.valueOf(ra));
                 i.putExtra("RB", String.valueOf(rb));
                 i.putExtra("C1", String.valueOf(C1));
