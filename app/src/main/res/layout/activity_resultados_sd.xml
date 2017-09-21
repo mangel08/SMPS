@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.miguelpc.smps.ResultadosSUActivity">
+    tools:context="com.example.miguelpc.smps.ResultadosSDActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_resultados_su" />
+    <include layout="@layout/content_resultados_sd" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -28,6 +28,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@drawable/ic_next"/>
+        app:srcCompat="@drawable/ic_next" />
 
 </android.support.design.widget.CoordinatorLayout>

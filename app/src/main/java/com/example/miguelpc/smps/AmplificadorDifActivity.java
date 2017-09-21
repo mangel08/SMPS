@@ -20,9 +20,9 @@ public class AmplificadorDifActivity extends AppCompatActivity {
     private static final String TAG = AmplificadorDifActivity.class.getSimpleName();
     public String Elemento3 = "LM741CN";
     public String D1 = "Zener 4,7 V";
-    public String R7 = "2000 ohm";
-    public String R8 = "10000 ohm";
-    public String R4 = "1500 ohm";
+    public String R7 = "2000 Ω";
+    public String R8 = "10000 Ω";
+    public String R4 = "1500 Ω";
     public double AMP = 10.9;
     public TextView tvD1, tvR4, tvR5, tvR6, tvR7, tvR8, tvR9, tvR10, tvElemento3;
     public Button btnCalcular;
@@ -97,12 +97,12 @@ public class AmplificadorDifActivity extends AppCompatActivity {
 
                     tvD1.setText("D1: " + D1);
                     tvR4.setText("R4: " + R4);
-                    tvR5.setText("R5: " + String.valueOf(R5));
-                    tvR6.setText("R6: " + String.valueOf(R6));
+                    tvR5.setText("R5: " + String.valueOf(R5) + " Ω");
+                    tvR6.setText("R6: " + String.valueOf(R6) + " Ω");
                     tvR7.setText("R7: " + R7);
                     tvR8.setText("R8: " + R8);
-                    tvR9.setText("R9: " + String.valueOf(R9));
-                    tvR10.setText("R10: " + String.valueOf(R10));
+                    tvR9.setText("R9: " + String.valueOf(R9) + " Ω");
+                    tvR10.setText("R10: " + String.valueOf(R10) + " Ω");
                     tvElemento3.setText("Elemento integrado: " + Elemento3);
 
                     fab.setVisibility(View.VISIBLE);

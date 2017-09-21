@@ -24,7 +24,7 @@ public class StepUpFinalActivity extends AppCompatActivity {
     public Button btnCalcular;
     public double R6, SMPS, R10, R5, R9, R2, ra, rb, C1, C2, C3, C4, CT, f, Vin, Vout, IO, C5, L1;
     public int RL;
-    public String R11 = "1000 OHM";
+    public String R11 = "1000 Ω";
     public String R1, R3, R4, R7, R8;
     public double Vptp = 0.004;
     public String Elemento, Elemento2, Elemento3, D1, v;
@@ -57,6 +57,7 @@ public class StepUpFinalActivity extends AppCompatActivity {
         etVin = (EditText) findViewById(R.id.etVin);
         etVout = (EditText) findViewById(R.id.etVout);
         etRL = (EditText) findViewById(R.id.etRL);
+
 
         //Intents values
         v = getIntent().getStringExtra("view");
@@ -103,12 +104,12 @@ public class StepUpFinalActivity extends AppCompatActivity {
 
                     fab.setVisibility(View.VISIBLE);
 
-                    tvC5.setText(String.valueOf("C5: " + C5));
-                    tvL1.setText(String.valueOf("L1: " + L1));
+                    tvC5.setText(String.valueOf("C5: " + C5 + " μF"));
+                    tvL1.setText(String.valueOf("L1: " + L1 + "mh"));
                     tvQ1.setText(String.valueOf("Q1: " + Q1));
-                    tvRL.setText(String.valueOf("RL: " +RL));
+                    tvRL.setText(String.valueOf("RL: " +RL + " Ω"));
                     tvD2.setText(String.valueOf("D2: " +D2));
-                    tvR11.setText(String.valueOf("R11: " + R11));
+                    tvR11.setText(String.valueOf("R11: " + R11 + " Ω"));
 
                 }else{
                     Toast.makeText(getApplicationContext(), "Campos vacios", Toast.LENGTH_LONG).show();
@@ -166,11 +167,11 @@ public class StepUpFinalActivity extends AppCompatActivity {
 
         Log.e(TAG, "IO: " + String.valueOf(io));
         Log.e(TAG, "CT: " + String.valueOf(ct));
-        f = f * 1000;
         Log.e(TAG, "F: " + String.valueOf(f));
         Log.e(TAG, "VPTP: " + String.valueOf(Vptp));
 
         double result = (io*ct)/(f*Vptp);
+        result = result * 1000000;
 
         Log.e(TAG, "C5: " + String.valueOf(result));
 
@@ -199,11 +200,11 @@ public class StepUpFinalActivity extends AppCompatActivity {
 
         Log.e(TAG, "Vin: " + String.valueOf(Vin));
         Log.e(TAG, "CT: " + String.valueOf(ct));
-        f = f * 1000;
         Log.e(TAG, "F: " + String.valueOf(f));
         Log.e(TAG, "IO: " + String.valueOf(io));
 
         double result = (Vin*(ct/(1-ct)))/(2*f*io);
+        result = result * 1000;
         Log.e(TAG, "L1: " + String.valueOf(result));
 
         return result;

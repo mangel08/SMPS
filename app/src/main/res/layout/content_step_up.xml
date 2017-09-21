@@ -10,8 +10,9 @@
 
     <android.support.v7.widget.AppCompatImageView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:srcCompat="@drawable/imagen_b0"/>
-
+        android:layout_height="400dp"
+        app:srcCompat="@drawable/imagen_b0"
+        android:scaleType="fitXY"
+        android:layout_centerVertical="true"/>
 
 </RelativeLayout>

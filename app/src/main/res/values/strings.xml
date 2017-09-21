@@ -11,4 +11,5 @@
     <string name="title_activity_step_down_final">StepDown</string>
     <string name="title_activity_resultados">Resultados</string>
     <string name="title_activity_resultados_su">Resultados Step Up</string>
+    <string name="title_activity_resultados_sd">Resultados Step Down</string>
 </resources>

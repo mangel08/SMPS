@@ -81,20 +81,23 @@ public class OpEstableActivity extends AppCompatActivity {
                     }else{
 
                         rb = Double.parseDouble(aux_rb);
+                        Log.e(TAG, "C3: " + String.valueOf(aux_c3));
                         aux_c3 = String.valueOf(Double.parseDouble(aux_c3) / 1000000L);
+                        Log.e(TAG, "C3: " + String.valueOf(aux_c3));
                         C3 = Double.parseDouble(aux_c3);
+                        Log.e(TAG, "C3: " + String.valueOf(C3));
 
                         CT = Double.parseDouble(aux_ct);
 
                         ra = CalcularRa(Double.parseDouble(aux_rb), Double.parseDouble(aux_ct));
-                        frecuencia = CalcularFrecuencia(ra,Double.parseDouble(aux_rb), C3);
+                        frecuencia = CalcularFrecuencia(ra,Double.parseDouble(aux_rb), Double.parseDouble(aux_c3));
 
-                        tvR1.setText("R1: " + R1 +" Ohm");
-                        tvRA.setText("RA: " + String.valueOf(ra));
-                        tvRB.setText("RB: " + aux_rb);
-                        tvC1.setText("C1: " + C1 + " Micro Faradios");
-                        tvC2.setText("C2: " + C2 + " Micro Faradios");
-                        tvC3.setText("C3: " + aux_c3);
+                        tvR1.setText("R1: " + R1 +" Ω");
+                        tvRA.setText("RA: " + String.valueOf(ra) + " Ω");
+                        tvRB.setText("RB: " + aux_rb + " Ω");
+                        tvC1.setText("C1: " + C1 + " μF");
+                        tvC2.setText("C2: " + C2 + " μF");
+                        tvC3.setText("C3: " + aux_c3 + " μF");
                         tvElemento.setText("Elemento integrado: " + Elemento);
                         tvFrecuencia.setText("Frecuencia: " + frecuencia);
 
@@ -135,6 +138,9 @@ public class OpEstableActivity extends AppCompatActivity {
         Log.e(TAG, "C3: " + String.valueOf(c3));
 
         double result = 1.44/((ra+2*rb)*c3);
+        Log.e(TAG, "FRECUENCIA: " + String.valueOf(result));
+
+        result = result * 1000;
 
         Log.e(TAG, "FRECUENCIA: " + String.valueOf(result));
 

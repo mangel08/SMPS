@@ -19,7 +19,7 @@ public class PWMActivity extends AppCompatActivity {
     public EditText etC4;
     public double R2, clockperiod;
     public double C4, f, ra, rb, C1, C2, C3, R1, CT;
-    public String R3 = "1000 Ohm";
+    public String R3 = "1000 Ω";
     public TextView tvR2, tvR3, tvC4, tvElemento;
     public Button btnCalcular;
     public String Elemento = "";
@@ -73,9 +73,9 @@ public class PWMActivity extends AppCompatActivity {
                     clockperiod = ClockPeriod(f);
                     R2 = CalcularR2(Double.parseDouble(aux_c4), clockperiod);
                     C4 = Double.parseDouble(aux_c4);
-                    tvR2.setText("R2: " + R2);
+                    tvR2.setText("R2: " + R2 + " Ω");
                     tvR3.setText("R3: " + R3);
-                    tvC4.setText("C4: " + String.valueOf(C4));
+                    tvC4.setText("C4: " + String.valueOf(C4) + " μF");
                     tvElemento.setText("Elemento integrado: " + Elemento2);
 
                     fab.setVisibility(View.VISIBLE);
@@ -113,7 +113,6 @@ public class PWMActivity extends AppCompatActivity {
 
     public double ClockPeriod(double f){
         Log.e(TAG, "F: " + String.valueOf(f));
-        f = (f * 1000);
         double result = 1/f;
 
         Log.e(TAG, "F: " + String.valueOf(f));
@@ -128,6 +127,8 @@ public class PWMActivity extends AppCompatActivity {
         Log.e(TAG, "CLOCK: " + String.valueOf(clockperiod));
 
         double result = ((0.25)*clockperiod)/c4;
+
+        result = result * 1000;
 
         Log.e(TAG, "R2: " + String.valueOf(result));
 

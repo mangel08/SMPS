@@ -10,9 +10,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-public class ResultadosSUActivity extends AppCompatActivity {
+public class ResultadosSDActivity extends AppCompatActivity {
 
-    private static final String TAG = ResultadosSUActivity.class.getSimpleName();
+    private static final String TAG = ResultadosSDActivity.class.getSimpleName();
     public TextView tvRA ,tvRB ,tvR1 ,tvR2 ,tvR3 ,tvR4 ,tvR5 ,tvR6 ,tvR7 ,tvR8 ,tvR9 ,tvR10 ,tvR11 ,tvRL ,tvC1 ,tvC2 ,tvC3 ,tvC4 ,tvC5 ,tvL1, tvD1, tvD2;
     public String RA ,RB ,R1 ,R2 ,R3 ,R4 ,R5 ,R6 ,R7 ,R8 ,R9 ,R10 ,R11 ,RL ,C1 ,C2 ,C3 ,C4 ,C5 ,L1, D1, D2;
     public FloatingActionButton fab;
@@ -20,7 +20,7 @@ public class ResultadosSUActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_resultados_su);
+        setContentView(R.layout.activity_resultados_sd);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -72,61 +72,60 @@ public class ResultadosSUActivity extends AppCompatActivity {
         D1 = getIntent().getStringExtra("D1");
         D2 = getIntent().getStringExtra("D2");
 
-        Log.e(TAG, "RA: " + String.valueOf(RA));
-        Log.e(TAG, "RB: " + String.valueOf(RB));
-        Log.e(TAG, "R1: " + String.valueOf(R1));
-        Log.e(TAG, "R2: " + String.valueOf(R2));
-        Log.e(TAG, "R3: " + String.valueOf(R3));
-        Log.e(TAG, "R4: " + String.valueOf(R4));
-        Log.e(TAG, "R5: " + String.valueOf(R5));
-        Log.e(TAG, "R6: " + String.valueOf(R6));
-        Log.e(TAG, "R7: " + String.valueOf(R7));
-        Log.e(TAG, "R8: " + String.valueOf(R8));
-        Log.e(TAG, "R9: " + String.valueOf(R9));
-        Log.e(TAG, "R10: " + String.valueOf(R10));
-        Log.e(TAG, "R11: " + String.valueOf(R11));
-        Log.e(TAG, "RL: " + String.valueOf(RL));
-        Log.e(TAG, "C1: " + String.valueOf(C1));
-        Log.e(TAG, "C2: " + String.valueOf(C2));
-        Log.e(TAG, "C3: " + String.valueOf(C3));
-        Log.e(TAG, "C4: " + String.valueOf(C4));
-        Log.e(TAG, "C5: " + String.valueOf(C5));
-        Log.e(TAG, "L1: " + String.valueOf(L1));
+        Log.e(TAG, "RA: " + String.valueOf(RA + " Ω"));
+        Log.e(TAG, "RB: " + String.valueOf(RB + " Ω"));
+        Log.e(TAG, "R1: " + String.valueOf(R1 + " Ω"));
+        Log.e(TAG, "R2: " + String.valueOf(R2 + " Ω"));
+        Log.e(TAG, "R3: " + String.valueOf(R3 + " Ω"));
+        Log.e(TAG, "R4: " + String.valueOf(R4 + " Ω"));
+        Log.e(TAG, "R5: " + String.valueOf(R5 + " Ω"));
+        Log.e(TAG, "R6: " + String.valueOf(R6 + " Ω"));
+        Log.e(TAG, "R7: " + String.valueOf(R7 + " Ω"));
+        Log.e(TAG, "R8: " + String.valueOf(R8 + " Ω"));
+        Log.e(TAG, "R9: " + String.valueOf(R9 + " Ω"));
+        Log.e(TAG, "R10: " + String.valueOf(R10 + " Ω"));
+        Log.e(TAG, "R11: " + String.valueOf(R11 + " Ω"));
+        Log.e(TAG, "RL: " + String.valueOf(RL + " Ω"));
+        Log.e(TAG, "C1: " + String.valueOf(C1 + "μF"));
+        Log.e(TAG, "C2: " + String.valueOf(C2 + "μF"));
+        Log.e(TAG, "C3: " + String.valueOf(C3 + "μF"));
+        Log.e(TAG, "C4: " + String.valueOf(C4 + "μF"));
+        Log.e(TAG, "C5: " + String.valueOf(C5 + "μF"));
+        Log.e(TAG, "L1: " + String.valueOf(L1)+ "mh");
         Log.e(TAG, "D1: " + String.valueOf(D1));
         Log.e(TAG, "D2: " + String.valueOf(D2));
 
 
-        tvRA.setText("RA: " +  String.valueOf(RA));
-        tvRB.setText("RB: " +  String.valueOf(RB));
-        tvR1.setText("R1: " +  String.valueOf(R1));
-        tvR2.setText("R2: " +  String.valueOf(R2));
-        tvR3.setText("R3: " +  String.valueOf(R3));
-        tvR4.setText("R4: " +  String.valueOf(R4));
-        tvR5.setText("R5: " +  String.valueOf(R5));
-        tvR6.setText("R6: " +  String.valueOf(R6));
-        tvR7.setText("R7: " +  String.valueOf(R7));
-        tvR8.setText("R8: " +  String.valueOf(R8));
-        tvR9.setText("R9: " +  String.valueOf(R9));
-        tvR10.setText("R10: " +  String.valueOf(R10));
-        tvR11.setText("R11: " +  String.valueOf(R11));
-        tvRL.setText("RL: " +  String.valueOf(RL));
-        tvC1.setText("C1: " +  String.valueOf(C1));
-        tvC2.setText("C2: " +  String.valueOf(C2));
-        tvC3.setText("C3: " +  String.valueOf(C3));
-        tvC4.setText("C4: " +  String.valueOf(C4));
-        tvC5.setText("C5: " +  String.valueOf(C5));
-        tvL1.setText("L1: " +  String.valueOf(L1));
+        tvRA.setText("RA: " +  String.valueOf(RA+ " Ω"));
+        tvRB.setText("RB: " +  String.valueOf(RB+ " Ω"));
+        tvR1.setText("R1: " +  String.valueOf(R1+ " Ω"));
+        tvR2.setText("R2: " +  String.valueOf(R2+ " Ω"));
+        tvR3.setText("R3: " +  String.valueOf(R3+ " Ω"));
+        tvR4.setText("R4: " +  String.valueOf(R4+ " Ω"));
+        tvR5.setText("R5: " +  String.valueOf(R5+ " Ω"));
+        tvR6.setText("R6: " +  String.valueOf(R6+ " Ω"));
+        tvR7.setText("R7: " +  String.valueOf(R7+ " Ω"));
+        tvR8.setText("R8: " +  String.valueOf(R8+ " Ω"));
+        tvR9.setText("R9: " +  String.valueOf(R9+ " Ω"));
+        tvR10.setText("R10: " +  String.valueOf(R10+ " Ω"));
+        tvR11.setText("R11: " +  String.valueOf(R11+ " Ω"));
+        tvRL.setText("RL: " +  String.valueOf(RL+ " Ω"));
+        tvC1.setText("C1: " +  String.valueOf(C1 + "μF"));
+        tvC2.setText("C2: " +  String.valueOf(C2 + "μF"));
+        tvC3.setText("C3: " +  String.valueOf(C3 + "μF"));
+        tvC4.setText("C4: " +  String.valueOf(C4 + "μF"));
+        tvC5.setText("C5: " +  String.valueOf(C5 + "μF"));
+        tvL1.setText("L1: " +  String.valueOf(L1 + "mh"));
         tvD1.setText("D1: " +  String.valueOf(D1));
         tvD2.setText("D2: " +  String.valueOf(D2));
 
-        //Float Button
-        fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(),MainActivity.class);
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(i);
                 finish();
             }

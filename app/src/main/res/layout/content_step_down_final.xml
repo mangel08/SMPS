@@ -24,29 +24,37 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/etSMPS"
-            android:layout_width="120dp"
+            android:id="@+id/etVin"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:hint="SMPS OUT"
+            android:hint="Vin"
             android:textAlignment="center"
             android:inputType="numberDecimal"
-            android:maxLength="3"/>
+            />
 
         <EditText
-            android:id="@+id/etR6"
-            android:layout_width="120dp"
+            android:id="@+id/etVout"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:hint="Valor R6"
+            android:hint=" Vout"
             android:textAlignment="center"
             android:inputType="numberDecimal"/>
 
         <EditText
-            android:id="@+id/etR10"
-            android:layout_width="120dp"
+            android:id="@+id/etRL"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:hint="Valor R10"
+            android:hint="RL"
             android:textAlignment="center"
             android:inputType="numberDecimal"/>
+
+        <!--<EditText-->
+            <!--android:id="@+id/etCS"-->
+            <!--android:layout_width="80dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:hint="Corriente Salida"-->
+            <!--android:textAlignment="center"-->
+            <!--android:inputType="numberDecimal"/>-->
 
     </LinearLayout>
 
@@ -58,6 +66,11 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/lLayout1"/>
 
+    <ScrollView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/btnCalcular">
+
     <LinearLayout
         android:id="@+id/lLayout2"
         android:layout_width="match_parent"
@@ -65,62 +78,51 @@
         android:layout_below="@+id/btnCalcular"
         android:orientation="vertical"
         android:layout_marginLeft="16dp"
+        android:paddingBottom="10dp"
         >
 
         <TextView
-            android:id="@+id/tvD1"
+            android:id="@+id/tvL1"
+            android:textSize="14sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             />
 
         <TextView
-            android:id="@+id/tvR4"
+            android:id="@+id/tvC5"
+            android:textSize="14sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             />
 
         <TextView
-            android:id="@+id/tvR5"
+            android:id="@+id/tvD2"
+            android:textSize="14sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             />
 
         <TextView
-            android:id="@+id/tvR6"
+            android:id="@+id/tvRL"
+            android:textSize="14sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             />
 
         <TextView
-            android:id="@+id/tvR7"
+            android:id="@+id/tvR11"
+            android:textSize="14sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             />
 
         <TextView
-            android:id="@+id/tvR8"
+            android:id="@+id/tvQ1"
+            android:textSize="14sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             />
-
-        <TextView
-            android:id="@+id/tvR9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
-
-        <TextView
-            android:id="@+id/tvR10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
-
-        <TextView
-            android:id="@+id/tvElemento3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
-
 
     </LinearLayout>
+    </ScrollView>
 </RelativeLayout>
