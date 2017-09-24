@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 
 public class StepDownFinalActivity extends AppCompatActivity {
 
@@ -23,13 +24,16 @@ public class StepDownFinalActivity extends AppCompatActivity {
     public Button btnCalcular;
     public double R6, SMPS, R10, R5, R9, R2, ra, rb, C1, C2, C3, C4, CT, f, Vin, Vout, Iout, C5, L1, CS;
     public int RL;
-    public String R11 = "1000 Ω";
+//    public String R11 = "1000 Ω";
     public String R1, R3, R4, R7, R8;
     public double Vptp = 0.25;
     public String Elemento, Elemento2, Elemento3, D1, v;
     public String Q1 = "Transistor MOSFET IRFZ44N";
     public String D2 = "diodo de alta frecuencia";
     public FloatingActionButton fab;
+    public DecimalFormat df = new DecimalFormat("#.00");
+    public DecimalFormat df3 = new DecimalFormat("#.00");
+    public DecimalFormat df2 = new DecimalFormat("#");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,12 +106,12 @@ public class StepDownFinalActivity extends AppCompatActivity {
                     C5 = CalcularC5(Iout,CT,f,Vptp);
                     L1 = CalcularL1(Vin,Vout,CT,Iout,f,Vptp);
 
-                    tvC5.setText(String.valueOf("C5: " + C5 + " μF"));
-                    tvL1.setText(String.valueOf("L1: " + L1 + "mh"));
+                    tvC5.setText(String.valueOf("C5: " + df.format(C5)+ " μF"));
+                    tvL1.setText(String.valueOf("L1: 0" + df.format(L1) + "mh"));
                     tvQ1.setText(String.valueOf("Q1: " + Q1));
                     tvRL.setText(String.valueOf("RL: " +RL + " Ω"));
                     tvD2.setText(String.valueOf("D2: " +D2));
-                    tvR11.setText(String.valueOf("R11: " + R11 + " Ω"));
+//                    tvR11.setText(String.valueOf("R11: " + R11 + " Ω"));
 
                     fab.setVisibility(View.VISIBLE);
 
@@ -132,13 +136,13 @@ public class StepDownFinalActivity extends AppCompatActivity {
                 i.putExtra("CT",  String.valueOf(CT));
                 i.putExtra("R6", String.valueOf(R6));
                 i.putExtra("R10", String.valueOf(R10));
-                i.putExtra("R11", String.valueOf(R11));
+//                i.putExtra("R11", String.valueOf(R11));
                 i.putExtra("SMPS", String.valueOf(SMPS));
                 i.putExtra("R5", String.valueOf(R5));
                 i.putExtra("R9", String.valueOf(R9));
                 i.putExtra("RL", String.valueOf(RL));
                 i.putExtra("C4", String.valueOf(C4));
-                i.putExtra("C5", String.valueOf(C5));
+                i.putExtra("C5", df.format(C5));
                 i.putExtra("Elemento", Elemento);
                 i.putExtra("Elemento2", Elemento2);
                 i.putExtra("Elemento3", Elemento3);
@@ -149,7 +153,7 @@ public class StepDownFinalActivity extends AppCompatActivity {
                 i.putExtra("R4", String.valueOf(R4));
                 i.putExtra("RL", String.valueOf(RL));
                 i.putExtra("Q1", String.valueOf(Q1));
-                i.putExtra("L1", String.valueOf(L1));
+                i.putExtra("L1", df.format(L1));
                 i.putExtra("F",  String.valueOf(f));
                 startActivity(i);
             }

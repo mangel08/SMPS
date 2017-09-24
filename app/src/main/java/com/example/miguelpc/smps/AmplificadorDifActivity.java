@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.text.DecimalFormat;
+
 public class AmplificadorDifActivity extends AppCompatActivity {
 
     private static final String TAG = AmplificadorDifActivity.class.getSimpleName();
@@ -29,7 +31,8 @@ public class AmplificadorDifActivity extends AppCompatActivity {
     public EditText etSMPS, etR6, etR10;
     public double R6, SMPS, R10, R5, R9, R1, R2, ra, rb, C1, C2, C3, C4, CT, f;
     public String Elemento, Elemento2, R3;
-
+    public DecimalFormat df = new DecimalFormat("#.00");
+    public DecimalFormat df2 = new DecimalFormat("#");
     public FloatingActionButton fab;
     public String v = "";
 
@@ -88,8 +91,8 @@ public class AmplificadorDifActivity extends AppCompatActivity {
 
                 if(!aux_r6.equals("") &&  !aux_smps.equals("") && !aux_r10.equals("")) {
 
-                    R6 = Double.parseDouble(aux_r6)* 1000;
-                    R10 = Double.parseDouble(aux_r10)* 1000;
+                    R6 = Double.parseDouble(aux_r6);
+                    R10 = Double.parseDouble(aux_r10);
                     SMPS = Double.parseDouble(aux_smps);
 
                     R5 = CalcularR5(SMPS,R6);
@@ -97,12 +100,12 @@ public class AmplificadorDifActivity extends AppCompatActivity {
 
                     tvD1.setText("D1: " + D1);
                     tvR4.setText("R4: " + R4);
-                    tvR5.setText("R5: " + String.valueOf(R5) + " Ω");
-                    tvR6.setText("R6: " + String.valueOf(R6) + " Ω");
+                    tvR5.setText("R5: " + df.format(R5)+ " Ω");
+                    tvR6.setText("R6: " + df2.format(R6) + " KΩ");
                     tvR7.setText("R7: " + R7);
                     tvR8.setText("R8: " + R8);
-                    tvR9.setText("R9: " + String.valueOf(R9) + " Ω");
-                    tvR10.setText("R10: " + String.valueOf(R10) + " Ω");
+                    tvR9.setText("R9: " + df.format(R9) + " Ω");
+                    tvR10.setText("R10: " + df2.format(R10)+ " KΩ");
                     tvElemento3.setText("Elemento integrado: " + Elemento3);
 
                     fab.setVisibility(View.VISIBLE);
@@ -129,11 +132,11 @@ public class AmplificadorDifActivity extends AppCompatActivity {
                     i.putExtra("C2",  String.valueOf(C2));
                     i.putExtra("C3",  String.valueOf(C3));
                     i.putExtra("CT",  String.valueOf(CT));
-                    i.putExtra("R6", String.valueOf(R6));
-                    i.putExtra("R10", String.valueOf(R10));
+                    i.putExtra("R6", df2.format(R6));
+                    i.putExtra("R10", df2.format(R10));
                     i.putExtra("SMPS", String.valueOf(SMPS));
-                    i.putExtra("R5", String.valueOf(R5));
-                    i.putExtra("R9", String.valueOf(R9));
+                    i.putExtra("R5", df.format(R5));
+                    i.putExtra("R9", df.format(R9));
                     i.putExtra("C4", String.valueOf(C4));
                     i.putExtra("Elemento", Elemento);
                     i.putExtra("Elemento2", Elemento2);
@@ -184,12 +187,13 @@ public class AmplificadorDifActivity extends AppCompatActivity {
         Log.e(TAG, "SMPS: " + String.valueOf(SMPS));
         Log.e(TAG, "R6: " + String.valueOf(R6));
 
+        R6 = R6 * 1000;
 
         double result = ((SMPS/6.5)-1)*R6;
 
         Log.e(TAG, "R5: " + String.valueOf(result));
 
-        return result / 1000;
+        return result;
     }
 
     public double CalcularR9(double AMP, double R10){
@@ -197,11 +201,13 @@ public class AmplificadorDifActivity extends AppCompatActivity {
         Log.e(TAG, "AMP: " + String.valueOf(AMP));
         Log.e(TAG, "R10: " + String.valueOf(R10));
 
+        R10 = R10 * 1000;
+
         double result = ((AMP/3.5)-1)*R10;
 
         Log.e(TAG, "R9: " + String.valueOf(result));
 
-        return result / 1000;
+        return result;
     }
 
 }

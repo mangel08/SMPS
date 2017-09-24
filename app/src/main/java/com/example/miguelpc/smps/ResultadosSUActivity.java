@@ -10,12 +10,16 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+
 public class ResultadosSUActivity extends AppCompatActivity {
 
     private static final String TAG = ResultadosSUActivity.class.getSimpleName();
     public TextView tvRA ,tvRB ,tvR1 ,tvR2 ,tvR3 ,tvR4 ,tvR5 ,tvR6 ,tvR7 ,tvR8 ,tvR9 ,tvR10 ,tvR11 ,tvRL ,tvC1 ,tvC2 ,tvC3 ,tvC4 ,tvC5 ,tvL1, tvD1, tvD2;
     public String RA ,RB ,R1 ,R2 ,R3 ,R4 ,R5 ,R6 ,R7 ,R8 ,R9 ,R10 ,R11 ,RL ,C1 ,C2 ,C3 ,C4 ,C5 ,L1, D1, D2;
     public FloatingActionButton fab;
+    public DecimalFormat df = new DecimalFormat("#.00");
+    public DecimalFormat df2 = new DecimalFormat("#");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,26 +100,26 @@ public class ResultadosSUActivity extends AppCompatActivity {
         Log.e(TAG, "D2: " + String.valueOf(D2));
 
 
-        tvRA.setText("RA: " +  String.valueOf(RA));
-        tvRB.setText("RB: " +  String.valueOf(RB));
-        tvR1.setText("R1: " +  String.valueOf(R1));
-        tvR2.setText("R2: " +  String.valueOf(R2));
+        tvRA.setText("RA: " +  String.valueOf(RA) + " Ω");
+        tvRB.setText("RB: " +  String.valueOf(RB) + " Ω");
+        tvR1.setText("R1: " +  String.valueOf(R1) + " Ω");
+        tvR2.setText("R2: " +  String.valueOf(R2) + " Ω");
         tvR3.setText("R3: " +  String.valueOf(R3));
         tvR4.setText("R4: " +  String.valueOf(R4));
-        tvR5.setText("R5: " +  String.valueOf(R5));
-        tvR6.setText("R6: " +  String.valueOf(R6));
+        tvR5.setText("R5: " +  String.valueOf(R5) + " Ω");
+        tvR6.setText("R6: " +  String.valueOf(R6) + " Ω");
         tvR7.setText("R7: " +  String.valueOf(R7));
         tvR8.setText("R8: " +  String.valueOf(R8));
-        tvR9.setText("R9: " +  String.valueOf(R9));
-        tvR10.setText("R10: " +  String.valueOf(R10));
+        tvR9.setText("R9: " +  R9 + " Ω");
+        tvR10.setText("R10: " +  String.valueOf(R10) + " Ω");
         tvR11.setText("R11: " +  String.valueOf(R11));
-        tvRL.setText("RL: " +  String.valueOf(RL));
-        tvC1.setText("C1: " +  String.valueOf(C1));
-        tvC2.setText("C2: " +  String.valueOf(C2));
-        tvC3.setText("C3: " +  String.valueOf(C3));
-        tvC4.setText("C4: " +  String.valueOf(C4));
-        tvC5.setText("C5: " +  String.valueOf(C5));
-        tvL1.setText("L1: " +  String.valueOf(L1));
+        tvRL.setText("RL: " +  String.valueOf(RL) + " Ω");
+        tvC1.setText("C1: " +  String.valueOf(C1) + "μF");
+        tvC2.setText("C2: " +  String.valueOf(C2) + "μF");
+        tvC3.setText("C3: " +  String.valueOf(C3) + "μF");
+        tvC4.setText("C4: " +  String.valueOf(C4) + "μF");
+        tvC5.setText("C5: " +  String.valueOf(C5) + "μF");
+        tvL1.setText("L1: 0" +  L1 + "mh");
         tvD1.setText("D1: " +  String.valueOf(D1));
         tvD2.setText("D2: " +  String.valueOf(D2));
 

@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
+
 public class PWMActivity extends AppCompatActivity {
 
     private static final String TAG = PWMActivity.class.getSimpleName();
@@ -26,6 +28,8 @@ public class PWMActivity extends AppCompatActivity {
     public String Elemento2 = "TIMER 555";
     public FloatingActionButton fab;
     public String v = "";
+    public DecimalFormat df = new DecimalFormat("#.00");
+    public DecimalFormat df2 = new DecimalFormat("#");
 
 
     @Override
@@ -69,13 +73,14 @@ public class PWMActivity extends AppCompatActivity {
 
                 if(!aux_c4.equals("")){
 
-                    aux_c4 = String.valueOf(Double.parseDouble(aux_c4) / 1000000L);
+                    aux_c4 = String.valueOf(Double.parseDouble(aux_c4));
+                    C4 = Double.parseDouble(aux_c4) / 1000000L;
                     clockperiod = ClockPeriod(f);
-                    R2 = CalcularR2(Double.parseDouble(aux_c4), clockperiod);
+                    R2 = CalcularR2(C4, clockperiod);
                     C4 = Double.parseDouble(aux_c4);
-                    tvR2.setText("R2: " + R2 + " Ω");
+                    tvR2.setText("R2: " + df.format(R2)+ " Ω");
                     tvR3.setText("R3: " + R3);
-                    tvC4.setText("C4: " + String.valueOf(C4) + " μF");
+                    tvC4.setText("C4: " + aux_c4 + " μF");
                     tvElemento.setText("Elemento integrado: " + Elemento2);
 
                     fab.setVisibility(View.VISIBLE);
@@ -93,7 +98,7 @@ public class PWMActivity extends AppCompatActivity {
                 Intent i = new Intent(getApplicationContext(), AmplificadorDifActivity.class);
                 i.putExtra("view", v);
                 i.putExtra("R1", String.valueOf(R1));
-                i.putExtra("R2", String.valueOf(R2));
+                i.putExtra("R2", df.format(R2));
                 i.putExtra("R3", String.valueOf(R3));
                 i.putExtra("RA", String.valueOf(ra));
                 i.putExtra("RB", String.valueOf(rb));

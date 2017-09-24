@@ -8,6 +8,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.util.StringBuilderPrinter;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,10 +16,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
+
 public class OpEstableActivity extends AppCompatActivity {
 
     private static final String TAG = OpEstableActivity.class.getSimpleName();
     public String v = "";
+    public String _C3;
     public EditText etCt, etRb, etC3;
     public Button btnCalcular;
     public TextView tvR1, tvRB, tvRA, tvC1, tvC2, tvC3, tvFrecuencia, tvElemento;
@@ -33,6 +37,8 @@ public class OpEstableActivity extends AppCompatActivity {
     public double C2 = 0.1;
     public double CT;
     public String Elemento = "TIMER 555";
+    public DecimalFormat df = new DecimalFormat("#.00");
+    public DecimalFormat df2 = new DecimalFormat("#");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,24 +88,26 @@ public class OpEstableActivity extends AppCompatActivity {
 
                         rb = Double.parseDouble(aux_rb);
                         Log.e(TAG, "C3: " + String.valueOf(aux_c3));
-                        aux_c3 = String.valueOf(Double.parseDouble(aux_c3) / 1000000L);
+                        aux_c3 = String.valueOf(Double.parseDouble(aux_c3));
                         Log.e(TAG, "C3: " + String.valueOf(aux_c3));
-                        C3 = Double.parseDouble(aux_c3);
+                        C3 = Double.parseDouble(aux_c3) / 1000000L;
                         Log.e(TAG, "C3: " + String.valueOf(C3));
+                        _C3 = aux_c3;
 
                         CT = Double.parseDouble(aux_ct);
 
                         ra = CalcularRa(Double.parseDouble(aux_rb), Double.parseDouble(aux_ct));
-                        frecuencia = CalcularFrecuencia(ra,Double.parseDouble(aux_rb), Double.parseDouble(aux_c3));
+                        frecuencia = CalcularFrecuencia(ra,Double.parseDouble(aux_rb), C3);
 
-                        tvR1.setText("R1: " + R1 +" Ω");
-                        tvRA.setText("RA: " + String.valueOf(ra) + " Ω");
+                        tvR1.setText("R1: " + df2.format(R1)+" Ω");
+                        tvRA.setText("RA: "+ df2.format(ra) + " Ω");
+
                         tvRB.setText("RB: " + aux_rb + " Ω");
                         tvC1.setText("C1: " + C1 + " μF");
                         tvC2.setText("C2: " + C2 + " μF");
                         tvC3.setText("C3: " + aux_c3 + " μF");
                         tvElemento.setText("Elemento integrado: " + Elemento);
-                        tvFrecuencia.setText("Frecuencia: " + frecuencia);
+                        tvFrecuencia.setText("Frecuencia: " + df2.format(frecuencia));
 
                         linearLayout1.setVisibility(View.VISIBLE);
                         fab.setVisibility(View.VISIBLE);
@@ -117,15 +125,15 @@ public class OpEstableActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), PWMActivity.class);
                 i.putExtra("view", v);
-                i.putExtra("R1", String.valueOf(R1));
-                i.putExtra("RA", String.valueOf(ra));
+                i.putExtra("R1", df2.format(R1));
+                i.putExtra("RA", df2.format(ra));
                 i.putExtra("RB", String.valueOf(rb));
                 i.putExtra("C1", String.valueOf(C1));
                 i.putExtra("C2", String.valueOf(C2));
-                i.putExtra("C3", String.valueOf(C3));
+                i.putExtra("C3", _C3);
                 i.putExtra("CT", String.valueOf(CT));
                 i.putExtra("Elemento", Elemento);
-                i.putExtra("F", String.valueOf(frecuencia));
+                i.putExtra("F", df2.format(frecuencia));
                 startActivity(i);
             }
         });

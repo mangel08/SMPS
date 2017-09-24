@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.text.DecimalFormat;
+
 public class StepUpFinalActivity extends AppCompatActivity {
 
     //Variables Globales
@@ -31,6 +33,8 @@ public class StepUpFinalActivity extends AppCompatActivity {
     public String Q1 = "Transistor MOSFET IRFZ44N";
     public String D2 = "diodo de alta frecuencia";
     public FloatingActionButton fab;
+    public DecimalFormat df = new DecimalFormat("#.00");
+    public DecimalFormat df2 = new DecimalFormat("#");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,12 +108,12 @@ public class StepUpFinalActivity extends AppCompatActivity {
 
                     fab.setVisibility(View.VISIBLE);
 
-                    tvC5.setText(String.valueOf("C5: " + C5 + " μF"));
-                    tvL1.setText(String.valueOf("L1: " + L1 + "mh"));
+                    tvC5.setText(String.valueOf("C5: " + df.format(C5)+ " μF"));
+                    tvL1.setText(String.valueOf("L1: 0" + df.format(L1)+ "mh"));
                     tvQ1.setText(String.valueOf("Q1: " + Q1));
                     tvRL.setText(String.valueOf("RL: " +RL + " Ω"));
                     tvD2.setText(String.valueOf("D2: " +D2));
-                    tvR11.setText(String.valueOf("R11: " + R11 + " Ω"));
+                    tvR11.setText(String.valueOf("R11: " + R11));
 
                 }else{
                     Toast.makeText(getApplicationContext(), "Campos vacios", Toast.LENGTH_LONG).show();
@@ -136,11 +140,11 @@ public class StepUpFinalActivity extends AppCompatActivity {
                 i.putExtra("R10", String.valueOf(R10));
                 i.putExtra("R11", String.valueOf(R11));
                 i.putExtra("SMPS", String.valueOf(SMPS));
-                i.putExtra("R5", String.valueOf(R5));
-                i.putExtra("R9", String.valueOf(R9));
+                i.putExtra("R5", df.format(R5));
+                i.putExtra("R9", df.format(R9));
                 i.putExtra("RL", String.valueOf(RL));
                 i.putExtra("C4", String.valueOf(C4));
-                i.putExtra("C5", String.valueOf(C5));
+                i.putExtra("C5", df.format(C5));
                 i.putExtra("Elemento", Elemento);
                 i.putExtra("Elemento2", Elemento2);
                 i.putExtra("Elemento3", Elemento3);
@@ -151,7 +155,7 @@ public class StepUpFinalActivity extends AppCompatActivity {
                 i.putExtra("R4", String.valueOf(R4));
                 i.putExtra("RL", String.valueOf(RL));
                 i.putExtra("Q1", String.valueOf(Q1));
-                i.putExtra("L1", String.valueOf(L1));
+                i.putExtra("L1", df.format(L1));
                 i.putExtra("F",  String.valueOf(f));
                 startActivity(i);
 
