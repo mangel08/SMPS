@@ -101,11 +101,11 @@ public class AmplificadorDifActivity extends AppCompatActivity {
                     tvD1.setText("D1: " + D1);
                     tvR4.setText("R4: " + R4);
                     tvR5.setText("R5: " + df.format(R5)+ " Ω");
-                    tvR6.setText("R6: " + df2.format(R6) + " KΩ");
+                    tvR6.setText("R6: " + df2.format(R6) + " Ω");
                     tvR7.setText("R7: " + R7);
                     tvR8.setText("R8: " + R8);
                     tvR9.setText("R9: " + df.format(R9) + " Ω");
-                    tvR10.setText("R10: " + df2.format(R10)+ " KΩ");
+                    tvR10.setText("R10: " + df2.format(R10)+ " Ω");
                     tvElemento3.setText("Elemento integrado: " + Elemento3);
 
                     fab.setVisibility(View.VISIBLE);
@@ -187,7 +187,7 @@ public class AmplificadorDifActivity extends AppCompatActivity {
         Log.e(TAG, "SMPS: " + String.valueOf(SMPS));
         Log.e(TAG, "R6: " + String.valueOf(R6));
 
-        R6 = R6 * 1000;
+//        R6 = R6 / 1000;
 
         double result = ((SMPS/6.5)-1)*R6;
 
@@ -201,7 +201,7 @@ public class AmplificadorDifActivity extends AppCompatActivity {
         Log.e(TAG, "AMP: " + String.valueOf(AMP));
         Log.e(TAG, "R10: " + String.valueOf(R10));
 
-        R10 = R10 * 1000;
+//        R10 = R10 / 1000;
 
         double result = ((AMP/3.5)-1)*R10;
 

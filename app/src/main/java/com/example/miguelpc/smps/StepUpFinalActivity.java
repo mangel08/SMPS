@@ -109,7 +109,7 @@ public class StepUpFinalActivity extends AppCompatActivity {
                     fab.setVisibility(View.VISIBLE);
 
                     tvC5.setText(String.valueOf("C5: " + df.format(C5)+ " μF"));
-                    tvL1.setText(String.valueOf("L1: 0" + df.format(L1)+ "mh"));
+                    tvL1.setText(String.valueOf("L1: " + df.format(L1)+ "mh"));
                     tvQ1.setText(String.valueOf("Q1: " + Q1));
                     tvRL.setText(String.valueOf("RL: " +RL + " Ω"));
                     tvD2.setText(String.valueOf("D2: " +D2));

@@ -107,7 +107,7 @@ public class StepDownFinalActivity extends AppCompatActivity {
                     L1 = CalcularL1(Vin,Vout,CT,Iout,f,Vptp);
 
                     tvC5.setText(String.valueOf("C5: " + df.format(C5)+ " μF"));
-                    tvL1.setText(String.valueOf("L1: 0" + df.format(L1) + "mh"));
+                    tvL1.setText(String.valueOf("L1: " + df.format(L1) + "mh"));
                     tvQ1.setText(String.valueOf("Q1: " + Q1));
                     tvRL.setText(String.valueOf("RL: " +RL + " Ω"));
                     tvD2.setText(String.valueOf("D2: " +D2));
@@ -197,7 +197,7 @@ public class StepDownFinalActivity extends AppCompatActivity {
 
 
 
-        double result = ((Vin-Vout)*ct)/(2*Iout*(float)f);
+        double result = ((Vin-Vout)*ct)/(2*Iout*f);
 
         Log.e(TAG, "L1: " + String.valueOf(result));
         result = result * 1000;

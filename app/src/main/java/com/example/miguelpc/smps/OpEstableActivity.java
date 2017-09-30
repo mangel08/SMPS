@@ -107,7 +107,7 @@ public class OpEstableActivity extends AppCompatActivity {
                         tvC2.setText("C2: " + C2 + " μF");
                         tvC3.setText("C3: " + aux_c3 + " μF");
                         tvElemento.setText("Elemento integrado: " + Elemento);
-                        tvFrecuencia.setText("Frecuencia: " + df2.format(frecuencia));
+                        tvFrecuencia.setText("Frecuencia: " + df2.format(frecuencia) + " Hz");
 
                         linearLayout1.setVisibility(View.VISIBLE);
                         fab.setVisibility(View.VISIBLE);
