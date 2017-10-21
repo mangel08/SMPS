@@ -97,7 +97,7 @@ public class OpEstableActivity extends AppCompatActivity {
 
                     if(Double.parseDouble(aux_ct) <= 0 || Double.parseDouble(aux_ct) >= 1 ){
 
-                        Toast.makeText(getApplicationContext(), "Ciclo de trabajo debe ser un valor entre 0 y 1", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Ciclo de trabajo debe ser un valor mayor a 0 y menor a 1 (0.1 ... 0.9)", Toast.LENGTH_LONG).show();
 
 
                     }else{
