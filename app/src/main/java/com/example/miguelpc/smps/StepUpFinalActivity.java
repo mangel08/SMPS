@@ -98,23 +98,30 @@ public class StepUpFinalActivity extends AppCompatActivity {
 
                 if (!aux_vin.equals("") && !aux_vout.equals("") && !aux_rl.equals("")) {
 
-                    Vin = Double.parseDouble(aux_vin);
-                    Vout = Double.parseDouble(aux_vout);
-                    RL = Integer.parseInt(aux_rl);
+                    if (Double.parseDouble(aux_vout) <= Double.parseDouble(aux_vin)) {
 
-                    IO = CalcularIO(Vout,Vptp,RL);
-                    C5 = CalcularC5(IO,CT,f,Vptp);
-                    L1 = CalcularL1(Vin,CT,f,IO);
+                        Toast.makeText(getApplicationContext(), "Esta configuración solo acepta valores de salida mayores a los valores de entrada", Toast.LENGTH_LONG).show();
 
-                    fab.setVisibility(View.VISIBLE);
+                    } else {
 
-                    tvC5.setText(String.valueOf("C5: " + df.format(C5)+ " μF"));
-                    tvL1.setText(String.valueOf("L1: " + df.format(L1)+ "mh"));
-                    tvQ1.setText(String.valueOf("Q1: " + Q1));
-                    tvRL.setText(String.valueOf("RL: " +RL + " Ω"));
-                    tvD2.setText(String.valueOf("D2: " +D2));
-                    tvR11.setText(String.valueOf("R11: " + R11));
 
+                        Vin = Double.parseDouble(aux_vin);
+                        Vout = Double.parseDouble(aux_vout);
+                        RL = Integer.parseInt(aux_rl);
+
+                        IO = CalcularIO(Vout, Vptp, RL);
+                        C5 = CalcularC5(IO, CT, f, Vptp);
+                        L1 = CalcularL1(Vin, CT, f, IO);
+
+                        fab.setVisibility(View.VISIBLE);
+
+                        tvC5.setText(String.valueOf("C5: " + df.format(C5) + " μF"));
+                        tvL1.setText(String.valueOf("L1: " + df.format(L1) + "mh"));
+                        tvQ1.setText(String.valueOf("Q1: " + Q1));
+                        tvRL.setText(String.valueOf("RL: " + RL + " Ω"));
+                        tvD2.setText(String.valueOf("D2: " + D2));
+                        tvR11.setText(String.valueOf("R11: " + R11));
+                    }
                 }else{
                     Toast.makeText(getApplicationContext(), "Campos vacios", Toast.LENGTH_LONG).show();
                 }

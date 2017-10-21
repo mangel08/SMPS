@@ -22,6 +22,7 @@ public class PWMActivity extends AppCompatActivity {
     public double R2, clockperiod;
     public double C4, f, ra, rb, C1, C2, C3, R1, CT;
     public String R3 = "1000 Ω";
+    public String R4, R5, C6, D1, U3;
     public TextView tvR2, tvR3, tvC4, tvElemento;
     public Button btnCalcular;
     public String Elemento = "";
@@ -48,6 +49,14 @@ public class PWMActivity extends AppCompatActivity {
         C2 = Double.parseDouble(getIntent().getStringExtra("C2"));
         C3 = Double.parseDouble(getIntent().getStringExtra("C3"));
         CT = Double.parseDouble(getIntent().getStringExtra("CT"));
+        D1 = getIntent().getStringExtra("D1");
+        R4 = getIntent().getStringExtra("R4");
+        R5 = getIntent().getStringExtra("R5");
+        C6 = getIntent().getStringExtra("C6");
+        U3 = getIntent().getStringExtra("U3");
+
+
+
         v = getIntent().getStringExtra("view");
 
         //Editext del formulario
@@ -95,22 +104,46 @@ public class PWMActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), AmplificadorDifActivity.class);
-                i.putExtra("view", v);
-                i.putExtra("R1", String.valueOf(R1));
-                i.putExtra("R2", df.format(R2));
-                i.putExtra("R3", String.valueOf(R3));
-                i.putExtra("RA", String.valueOf(ra));
-                i.putExtra("RB", String.valueOf(rb));
-                i.putExtra("C1", String.valueOf(C1));
-                i.putExtra("C2", String.valueOf(C2));
-                i.putExtra("C3", String.valueOf(C3));
-                i.putExtra("C4", String.valueOf(C4));
-                i.putExtra("CT", String.valueOf(CT));
-                i.putExtra("Elemento", Elemento);
-                i.putExtra("Elemento2", Elemento2);
-                i.putExtra("F", String.valueOf(f));
-                startActivity(i);
+                if(v.equals("SU")) {
+                    Intent i = new Intent(getApplicationContext(), AmplificadorDifActivity.class);
+                    i.putExtra("view", v);
+                    i.putExtra("R1", String.valueOf(R1));
+                    i.putExtra("R2", df.format(R2));
+                    i.putExtra("R3", String.valueOf(R3));
+                    i.putExtra("RA", String.valueOf(ra));
+                    i.putExtra("RB", String.valueOf(rb));
+                    i.putExtra("C1", String.valueOf(C1));
+                    i.putExtra("C2", String.valueOf(C2));
+                    i.putExtra("C3", String.valueOf(C3));
+                    i.putExtra("C4", String.valueOf(C4));
+                    i.putExtra("CT", String.valueOf(CT));
+                    i.putExtra("Elemento", Elemento);
+                    i.putExtra("Elemento2", Elemento2);
+                    i.putExtra("F", String.valueOf(f));
+                    startActivity(i);
+                }else{
+                    Intent i = new Intent(getApplicationContext(), StepDownFinalActivity.class);
+                    i.putExtra("view", v);
+                    i.putExtra("R1", String.valueOf(R1));
+                    i.putExtra("R2", df.format(R2));
+                    i.putExtra("R3", String.valueOf(R3));
+                    i.putExtra("R4", R4);
+                    i.putExtra("R5", R5);
+                    i.putExtra("C", C6);
+                    i.putExtra("U3", U3);
+                    i.putExtra("D1", D1);
+                    i.putExtra("RA", String.valueOf(ra));
+                    i.putExtra("RB", String.valueOf(rb));
+                    i.putExtra("C1", String.valueOf(C1));
+                    i.putExtra("C2", String.valueOf(C2));
+                    i.putExtra("C3", String.valueOf(C3));
+                    i.putExtra("C4", String.valueOf(C4));
+                    i.putExtra("CT", String.valueOf(CT));
+                    i.putExtra("Elemento", Elemento);
+                    i.putExtra("Elemento2", Elemento2);
+                    i.putExtra("F", String.valueOf(f));
+                    startActivity(i);
+                }
             }
         });
 

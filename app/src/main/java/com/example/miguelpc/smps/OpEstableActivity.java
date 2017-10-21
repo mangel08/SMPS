@@ -25,7 +25,7 @@ public class OpEstableActivity extends AppCompatActivity {
     public String _C3;
     public EditText etCt, etRb, etC3;
     public Button btnCalcular;
-    public TextView tvR1, tvRB, tvRA, tvC1, tvC2, tvC3, tvFrecuencia, tvElemento;
+    public TextView tvR1, tvRB, tvRA, tvC1, tvC2, tvC3, tvD1, tvR4, tvR5, tvC6, tvU3, tvFrecuencia, tvElemento;
     public LinearLayout linearLayout1;
     public FloatingActionButton fab;
     public double R1 = 1000;
@@ -36,6 +36,11 @@ public class OpEstableActivity extends AppCompatActivity {
     public double C1 = 45;
     public double C2 = 0.1;
     public double CT;
+    public String D1 = "D1: Diodo de alta frecuencia";
+    public String R4 = "R4: 100 Ω";
+    public String R5 = "R5: 2000 Ω";
+    public String C6 = "C6: ";
+    public String U3 = "U3: Opto acoplador";
     public String Elemento = "TIMER 555";
     public DecimalFormat df = new DecimalFormat("#.00");
     public DecimalFormat df2 = new DecimalFormat("#");
@@ -63,6 +68,12 @@ public class OpEstableActivity extends AppCompatActivity {
         tvC1 = (TextView)findViewById(R.id.tvC1);
         tvC2 = (TextView)findViewById(R.id.tvC2);
         tvC3 = (TextView)findViewById(R.id.tvC3);
+        tvD1 = (TextView)findViewById(R.id.tvD1);
+        tvR4 = (TextView)findViewById(R.id.tvR4);
+        tvR5 = (TextView)findViewById(R.id.tvR5);
+        tvC6 = (TextView)findViewById(R.id.tvC6);
+        tvU3 = (TextView)findViewById(R.id.tvU3);
+
         tvElemento = (TextView)findViewById(R.id.tvElemento);
         tvFrecuencia = (TextView)findViewById(R.id.tvFrecuencia);
 
@@ -82,8 +93,13 @@ public class OpEstableActivity extends AppCompatActivity {
 
                 if(!aux_ct.equals("") &&  !aux_rb.equals("") && !aux_c3.equals("")){
 
-                    if(Double.parseDouble(aux_ct) < 0 || Double.parseDouble(aux_ct) > 1 ){
+
+
+                    if(Double.parseDouble(aux_ct) <= 0 || Double.parseDouble(aux_ct) >= 1 ){
+
                         Toast.makeText(getApplicationContext(), "Ciclo de trabajo debe ser un valor entre 0 y 1", Toast.LENGTH_LONG).show();
+
+
                     }else{
 
                         rb = Double.parseDouble(aux_rb);
@@ -106,6 +122,11 @@ public class OpEstableActivity extends AppCompatActivity {
                         tvC1.setText("C1: " + C1 + " μF");
                         tvC2.setText("C2: " + C2 + " μF");
                         tvC3.setText("C3: " + aux_c3 + " μF");
+                        tvD1.setText(D1);
+                        tvR4.setText(R4);
+                        tvR5.setText(R5);
+                        tvC6.setText(C6);
+                        tvU3.setText(U3);
                         tvElemento.setText("Elemento integrado: " + Elemento);
                         tvFrecuencia.setText("Frecuencia: " + df2.format(frecuencia) + " Hz");
 
@@ -126,6 +147,11 @@ public class OpEstableActivity extends AppCompatActivity {
                 Intent i = new Intent(getApplicationContext(), PWMActivity.class);
                 i.putExtra("view", v);
                 i.putExtra("R1", df2.format(R1));
+                i.putExtra("R4", R4);
+                i.putExtra("R5", R5);
+                i.putExtra("C", C6);
+                i.putExtra("U3", U3);
+                i.putExtra("D1", D1);
                 i.putExtra("RA", df2.format(ra));
                 i.putExtra("RB", String.valueOf(rb));
                 i.putExtra("C1", String.valueOf(C1));

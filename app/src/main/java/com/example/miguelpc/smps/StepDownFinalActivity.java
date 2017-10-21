@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
@@ -19,13 +20,15 @@ public class StepDownFinalActivity extends AppCompatActivity {
 
     //Variables Globales
     private static final String TAG = StepUpFinalActivity.class.getSimpleName();
-    public TextView tvL1, tvC5, tvD2, tvRL, tvQ1, tvR11;
+    public TextView tvL1, tvC5, tvD2, tvRL, tvQ1, tvR11, tvR6, tvR7;
     public EditText  etVin, etVout, etRL, etCS;
     public Button btnCalcular;
-    public double R6, SMPS, R10, R5, R9, R2, ra, rb, C1, C2, C3, C4, CT, f, Vin, Vout, Iout, C5, L1, CS;
+    public double SMPS, R10, R2, ra, rb, C1, C2, C3, C4, CT, f, Vin, Vout, Iout, C5, L1, CS;
     public int RL;
 //    public String R11 = "1000 Ω";
-    public String R1, R3, R4, R7, R8;
+    public String R1, R3, R4, R8, C6, U3, R5;
+    public String R6 = "R6: 100 Ω";
+    public String R7 = "R7: 2000 Ω";
     public double Vptp = 0.25;
     public String Elemento, Elemento2, Elemento3, D1, v;
     public String Q1 = "Transistor MOSFET IRFZ44N";
@@ -55,6 +58,8 @@ public class StepDownFinalActivity extends AppCompatActivity {
         tvRL = (TextView) findViewById(R.id.tvRL);
         tvQ1 = (TextView) findViewById(R.id.tvQ1);
         tvR11 = (TextView) findViewById(R.id.tvR11);
+        tvR6 = (TextView) findViewById(R.id.tvR6);
+        tvR7 = (TextView) findViewById(R.id.tvR7);
 
         //EditText
         etVin = (EditText) findViewById(R.id.etVin);
@@ -78,15 +83,18 @@ public class StepDownFinalActivity extends AppCompatActivity {
         C4 = Double.parseDouble(getIntent().getStringExtra("C4"));
         CT = Double.parseDouble(getIntent().getStringExtra("CT"));
         f = Double.parseDouble(getIntent().getStringExtra("F"));
-        R5 = Double.parseDouble(getIntent().getStringExtra("R5"));
-        R9 = Double.parseDouble(getIntent().getStringExtra("R9"));
-        R7 = getIntent().getStringExtra("R7");
-        R8 = getIntent().getStringExtra("R8");
-        R4 =getIntent().getStringExtra("R4");
-        R6 = Double.parseDouble(getIntent().getStringExtra("R6"));
-        R10 = Double.parseDouble(getIntent().getStringExtra("R10"));
         D1 = getIntent().getStringExtra("D1");
-        SMPS = Double.parseDouble(getIntent().getStringExtra("SMPS"));
+        R4 = getIntent().getStringExtra("R4");
+        R5 = getIntent().getStringExtra("R5");
+        C6 = getIntent().getStringExtra("C6");
+        U3 = getIntent().getStringExtra("U3");
+//        R9 = Double.parseDouble(getIntent().getStringExtra("R9"));
+//        R7 = getIntent().getStringExtra("R7");
+        R8 = getIntent().getStringExtra("R8");
+//        R6 = Double.parseDouble(getIntent().getStringExtra("R6"));
+//        R10 = Double.parseDouble(getIntent().getStringExtra("R10"));
+
+//        SMPS = Double.parseDouble(getIntent().getStringExtra("SMPS"));
 
         btnCalcular.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,24 +105,34 @@ public class StepDownFinalActivity extends AppCompatActivity {
 //                String aux_cs = etCS.getText().toString();
 
                 if (!aux_vin.equals("") && !aux_vout.equals("") && !aux_rl.equals("")) {
-                    Vin = Double.parseDouble(aux_vin);
-                    Vout = Double.parseDouble(aux_vout);
-                    RL = Integer.parseInt(aux_rl);
+
+                    if (Double.parseDouble(aux_vout) >= Double.parseDouble(aux_vin)) {
+
+                        Toast.makeText(getApplicationContext(), "Esta configuración solo acepta valores de salida menores a los valores de entrada", Toast.LENGTH_LONG).show();
+
+                    }else{
+
+                        Vin = Double.parseDouble(aux_vin);
+                        Vout = Double.parseDouble(aux_vout);
+                        RL = Integer.parseInt(aux_rl);
 //                    CS = Integer.parseInt(aux_cs);
 
-                    Iout = CalcularIout(Vout,RL);
-                    C5 = CalcularC5(Iout,CT,f,Vptp);
-                    L1 = CalcularL1(Vin,Vout,CT,Iout,f,Vptp);
+                        Iout = CalcularIout(Vout, RL);
+                        C5 = CalcularC5(Iout, CT, f, Vptp);
+                        L1 = CalcularL1(Vin, Vout, CT, Iout, f, Vptp);
 
-                    tvC5.setText(String.valueOf("C5: " + df.format(C5)+ " μF"));
-                    tvL1.setText(String.valueOf("L1: " + df.format(L1) + "mh"));
-                    tvQ1.setText(String.valueOf("Q1: " + Q1));
-                    tvRL.setText(String.valueOf("RL: " +RL + " Ω"));
-                    tvD2.setText(String.valueOf("D2: " +D2));
+                        tvC5.setText(String.valueOf("C5: " + df.format(C5) + " μF"));
+                        tvL1.setText(String.valueOf("L1: " + df.format(L1) + "mh"));
+                        tvQ1.setText(String.valueOf("Q1: " + Q1));
+                        tvRL.setText(String.valueOf("RL: " + RL + " Ω"));
+                        tvD2.setText(String.valueOf("D2: " + D2));
+                        tvR6.setText(R6);
+                        tvR7.setText(R7);
 //                    tvR11.setText(String.valueOf("R11: " + R11 + " Ω"));
 
-                    fab.setVisibility(View.VISIBLE);
+                        fab.setVisibility(View.VISIBLE);
 
+                    }
                 }
             }
         });
@@ -123,6 +141,7 @@ public class StepDownFinalActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent i = new Intent(getApplicationContext(),ResultadosSDActivity.class);
                 i.putExtra("view", v);
                 i.putExtra("R1",  String.valueOf(R1));
@@ -135,11 +154,11 @@ public class StepDownFinalActivity extends AppCompatActivity {
                 i.putExtra("C3",  String.valueOf(C3));
                 i.putExtra("CT",  String.valueOf(CT));
                 i.putExtra("R6", String.valueOf(R6));
-                i.putExtra("R10", String.valueOf(R10));
+//                i.putExtra("R10", String.valueOf(R10));
 //                i.putExtra("R11", String.valueOf(R11));
-                i.putExtra("SMPS", String.valueOf(SMPS));
+//                i.putExtra("SMPS", String.valueOf(SMPS));
                 i.putExtra("R5", String.valueOf(R5));
-                i.putExtra("R9", String.valueOf(R9));
+//                i.putExtra("R9", String.valueOf(R9));
                 i.putExtra("RL", String.valueOf(RL));
                 i.putExtra("C4", String.valueOf(C4));
                 i.putExtra("C5", df.format(C5));
