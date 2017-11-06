@@ -101,9 +101,10 @@ public class ResultadosSDActivity extends AppCompatActivity {
         Log.e(TAG, "D1: " + String.valueOf(D1));
         Log.e(TAG, "D2: " + String.valueOf(D2));
 
+        Double rb = Double.parseDouble(RB);
 
         tvRA.setText("RA: " +  String.valueOf(RA+ " Ω"));
-        tvRB.setText("RB: " +  df2.format(RB) + " Ω");
+        tvRB.setText("RB: " +  df2.format(rb) + " Ω");
         tvR1.setText("R1: " +  String.valueOf(R1+ " Ω"));
         tvR2.setText("R2: " +  String.valueOf(R2+ " Ω"));
         tvR3.setText("R3: " +  String.valueOf(R3));

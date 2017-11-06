@@ -76,8 +76,10 @@ public class ResultadosSUActivity extends AppCompatActivity {
         D1 = getIntent().getStringExtra("D1");
         D2 = getIntent().getStringExtra("D2");
 
+        Double rb = Double.parseDouble(RB);
+
         Log.e(TAG, "RA: " + String.valueOf(RA));
-        Log.e(TAG, "RB: " + df2.format(RB));
+        Log.e(TAG, "RB: " + df2.format(rb));
         Log.e(TAG, "R1: " + String.valueOf(R1));
         Log.e(TAG, "R2: " + String.valueOf(R2));
         Log.e(TAG, "R3: " + String.valueOf(R3));
@@ -99,9 +101,8 @@ public class ResultadosSUActivity extends AppCompatActivity {
         Log.e(TAG, "D1: " + String.valueOf(D1));
         Log.e(TAG, "D2: " + String.valueOf(D2));
 
-
         tvRA.setText("RA: " +  String.valueOf(RA) + " Ω");
-        tvRB.setText("RB: " +  df2.format(RB) + " Ω");
+        tvRB.setText("RB: " +  df2.format(rb) + " Ω");
         tvR1.setText("R1: " +  String.valueOf(R1) + " Ω");
         tvR2.setText("R2: " +  String.valueOf(R2) + " Ω");
         tvR3.setText("R3: " +  String.valueOf(R3));
