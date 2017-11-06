@@ -12,7 +12,6 @@
         android:id="@+id/img1"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:src="@drawable/imagen_a2"
         android:scaleType="fitXY"/>
 
     <LinearLayout

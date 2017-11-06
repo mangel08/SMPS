@@ -1,6 +1,7 @@
 package com.example.miguelpc.smps;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +21,7 @@ public class PWMActivity extends AppCompatActivity {
 
     private static final String TAG = PWMActivity.class.getSimpleName();
     public EditText etC4;
+    public ImageView img;
     public double R2, clockperiod;
     public double C4, f, ra, rb, C1, C2, C3, R1, CT;
     public String R3 = "1000 Ω";
@@ -67,9 +70,16 @@ public class PWMActivity extends AppCompatActivity {
         tvR3 = (TextView) findViewById(R.id.tvR3);
         tvC4 = (TextView) findViewById(R.id.tvC4);
         tvElemento = (TextView) findViewById(R.id.tvElemento);
+        img = (ImageView)findViewById(R.id.img1);
 
         //Buutton
         btnCalcular = (Button)findViewById(R.id.btnCalcular);
+
+        if (v.equals("SD")) {
+            img.setImageResource(R.drawable.imagen_a2);
+        }else{
+            img.setImageResource(R.drawable.imagen_b2);
+        }
 
         //FloatButton
         fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -166,7 +176,7 @@ public class PWMActivity extends AppCompatActivity {
 
         double result = ((0.25)*clockperiod)/c4;
 
-        result = result * 1000;
+        result = (result * 1000) / 100;
 
         Log.e(TAG, "R2: " + String.valueOf(result));
 

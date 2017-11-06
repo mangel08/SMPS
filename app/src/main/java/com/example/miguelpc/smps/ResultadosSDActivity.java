@@ -10,14 +10,18 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+
 public class ResultadosSDActivity extends AppCompatActivity {
 
     private static final String TAG = ResultadosSDActivity.class.getSimpleName();
     public TextView tvRA ,tvRB ,tvR1 ,tvR2 ,tvR3 ,tvR4 ,tvR5 ,tvR6 ,tvR7 ,tvR8,tvR10 ,tvR11 ,tvRL ,tvC1 ,tvC2 ,tvC3 ,tvC4 ,tvC5, tvC6 ,tvL1, tvD1, tvD2, tvD3, tvU3;
     public String RA ,RB ,R1 ,R2 ,R3 ,R4 ,R5 ,R6 ,R7, RL ,C1 ,C2 ,C3 ,C4 ,C5 ,L1, D1, D2, U3;
-    public String C6 = "";
+    public String C6 = "220 μF";
     public String D3 = "Diodo Zener 4,7 V";
     public FloatingActionButton fab;
+    public DecimalFormat df = new DecimalFormat("#.00");
+    public DecimalFormat df2 = new DecimalFormat("#");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,7 +103,7 @@ public class ResultadosSDActivity extends AppCompatActivity {
 
 
         tvRA.setText("RA: " +  String.valueOf(RA+ " Ω"));
-        tvRB.setText("RB: " +  String.valueOf(RB+ " Ω"));
+        tvRB.setText("RB: " +  df2.format(RB) + " Ω");
         tvR1.setText("R1: " +  String.valueOf(R1+ " Ω"));
         tvR2.setText("R2: " +  String.valueOf(R2+ " Ω"));
         tvR3.setText("R3: " +  String.valueOf(R3));
@@ -115,7 +119,7 @@ public class ResultadosSDActivity extends AppCompatActivity {
         tvC3.setText("C3: " +  String.valueOf(C3 + "μF"));
         tvC4.setText("C4: " +  String.valueOf(C4 + "μF"));
         tvC5.setText("C5: " +  String.valueOf(C5 + "μF"));
-        tvC5.setText("C6: " +  String.valueOf(C6 + "μF"));
+        tvC5.setText("C6: " +  String.valueOf(C6));
         tvL1.setText("L1: 0" +  String.valueOf(L1 + "mh"));
         tvD1.setText(String.valueOf(D1));
         tvD2.setText("D2: " +  String.valueOf(D2));

@@ -12,6 +12,7 @@ import android.util.StringBuilderPrinter;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,6 +25,7 @@ public class OpEstableActivity extends AppCompatActivity {
     public String v;
     public String _C3;
     public EditText etFrecuencia, etRA, etC3;
+    public ImageView img;
     public Button btnCalcular;
     public TextView tvR1, tvRB, tvRA, tvC1, tvC2, tvC3, tvD1, tvR4, tvR5, tvC6, tvU3, tvFrecuencia, tvElemento, tvCT;
     public LinearLayout linearLayout1;
@@ -39,7 +41,7 @@ public class OpEstableActivity extends AppCompatActivity {
     public String D1 = "D1: Diodo de alta frecuencia";
     public String R4 = "R4: 100 Ω";
     public String R5 = "R5: 2000 Ω";
-    public String C6 = "C6: ";
+    public String C6 = "C6: 220 μF";
     public String U3 = "U3: Opto acoplador";
     public String Elemento = "TIMER 555";
     public DecimalFormat df = new DecimalFormat("#.00");
@@ -76,6 +78,7 @@ public class OpEstableActivity extends AppCompatActivity {
         tvC6 = (TextView)findViewById(R.id.tvC6);
         tvU3 = (TextView)findViewById(R.id.tvU3);
         tvCT = (TextView)findViewById(R.id.tvCT);
+        img = (ImageView)findViewById(R.id.img1);
 
         tvElemento = (TextView)findViewById(R.id.tvElemento);
         tvFrecuencia = (TextView)findViewById(R.id.tvFrecuencia);
@@ -86,16 +89,22 @@ public class OpEstableActivity extends AppCompatActivity {
         //Button para calcular
         btnCalcular = (Button)findViewById(R.id.btnCalcular);
 
+        if (v.equals("SD")) {
+            img.setImageResource(R.drawable.imagen_a1);
+        }else{
+            img.setImageResource(R.drawable.imagen_b1);
+        }
+
         btnCalcular.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                String aux_frecuencia = etFrecuencia.getText().toString();
-                String aux_ra = etRA.getText().toString();
-                ra = Double.parseDouble(aux_ra);
-                String aux_c3 =  etC3.getText().toString();
+                  if(!etFrecuencia.getText().toString().equals("") &&  !etRA.getText().toString().equals("") && !etC3.getText().toString().equals("")){
 
-                if(!aux_frecuencia.equals("") &&  !aux_ra.equals("") && !aux_c3.equals("")){
+                      String aux_frecuencia = etFrecuencia.getText().toString();
+                      String aux_ra = etRA.getText().toString();
+                      ra = Double.parseDouble(aux_ra);
+                      String aux_c3 =  etC3.getText().toString();
 
                     aux_c3 = String.valueOf(Double.parseDouble(aux_c3));
 
@@ -117,18 +126,18 @@ public class OpEstableActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Por favor ajuste el valor de C3 a un valor menor", Toast.LENGTH_LONG).show();
                     }else{
                         if(v.equals("SU")){
-                            Toast.makeText(getApplicationContext(), "SU", Toast.LENGTH_LONG).show();
+//                            Toast.makeText(getApplicationContext(), "SU", Toast.LENGTH_LONG).show();
                             tvR1.setText("R1: " + df2.format(R1)+" Ω");
                             tvRA.setText("RA: "+ df2.format(ra) + " Ω");
-                            tvRB.setText("RB: " + df.format(rb)+ " Ω");
+                            tvRB.setText("RB: " + df2.format(rb)+ " Ω");
                             tvC1.setText("C1: " + C1 + " μF");
                             tvC2.setText("C2: " + C2 + " μF");
                             tvC3.setText("C3: " + aux_c3 + " μF");
                             tvElemento.setText("Elemento integrado: " + Elemento);
                             tvFrecuencia.setText("Frecuencia: " + df2.format(F) + " Hz");
-                            tvCT.setText("Ciclo de trabajo: " + df2.format(CT));
+                            tvCT.setText("Ciclo de trabajo: " + df.format(CT));
                         }else{
-                            Toast.makeText(getApplicationContext(), "SD", Toast.LENGTH_LONG).show();
+//                            Toast.makeText(getApplicationContext(), "SD", Toast.LENGTH_LONG).show();
                             tvR1.setText("R1: " + df2.format(R1)+" Ω");
                             tvRA.setText("RA: "+ df2.format(ra) + " Ω");
                             tvRB.setText("RB: " + df2.format(rb)+ " Ω");
@@ -173,7 +182,7 @@ public class OpEstableActivity extends AppCompatActivity {
                 i.putExtra("C3", _C3);
                 i.putExtra("CT", String.valueOf(CT));
                 i.putExtra("Elemento", Elemento);
-                i.putExtra("F", df2.format(frecuencia));
+                i.putExtra("F", df2.format(F));
                 startActivity(i);
             }
         });
